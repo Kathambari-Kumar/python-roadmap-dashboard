@@ -5,7 +5,6 @@ import streamlit as st
 # Create horizontal layout
 hide_streamlit_style = """
     <style>
-    #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
     </style>
