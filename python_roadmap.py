@@ -51,7 +51,7 @@ st.caption("Curated by Kathambari — blending backend clarity with creative sto
 #st.sidebar.markdown('<div class="sidebar-title">📚 Explore Roadmap</div>', unsafe_allow_html=True)
 section = "Welcome"
 st.sidebar.divider()
-section = st.sidebar.radio("", [
+section = st.sidebar.radio("Select a section:", [
     "Welcome",
     "About Me",
     "Foundations",
