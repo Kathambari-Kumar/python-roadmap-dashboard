@@ -5,4 +5,5 @@ requests
 pymysql
 torch
 matplotlib
+streamlit-js-eval
 

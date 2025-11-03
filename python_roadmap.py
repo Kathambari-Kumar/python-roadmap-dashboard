@@ -8,7 +8,7 @@ screen_width = streamlit_js_eval(js_expressions="screen.width", key="width")
 hide_streamlit_style = """
     <style>
      #MainMenu {visibility: hidden;}
-     header{visibility: hidden;}
+     header {visibility: hidden;}
     footer {visibility: hidden;}
     </style>
 """
