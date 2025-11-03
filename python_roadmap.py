@@ -1,11 +1,14 @@
 import streamlit as st
+from streamlit_js_eval import streamlit_js_eval
 
+screen_width = streamlit_js_eval(js_expressions="screen.width", key="width")
 # Theme selector
 
 # Create horizontal layout
 hide_streamlit_style = """
     <style>
      #MainMenu {visibility: hidden;}
+     header{visibility: hidden;}
     footer {visibility: hidden;}
     </style>
 """
@@ -36,6 +39,13 @@ section[data-testid="stSidebar"] {
     font-size : 20px;
     font-weight:bold;
 }
+
+/* Hide mobile menu on screens wider than 768px */
+@media (min-width: 768px) {
+    .mobile-menu {
+        display: none;
+    }
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -56,9 +66,8 @@ st.caption("Curated by Kathambari — blending backend clarity with creative sto
 
 # Sidebar navigation
 st.sidebar.markdown('<div class="sidebar-title">📚 Explore Roadmap</div>', unsafe_allow_html=True)
-section = "Welcome"
 st.sidebar.divider()
-section = st.sidebar.radio("", [
+sidebar_choice = st.sidebar.radio("", [
     "Welcome",
     "About Me",
     "Foundations",
@@ -73,7 +82,17 @@ section = st.sidebar.radio("", [
 
 
 # Section content
-if section == "Welcome":
+
+if screen_width and screen_width < 768:
+    menu_choice = st.selectbox(
+        "📱 Mobile Menu — tap to navigate",
+        ["Welcome", "About Me", "Foundations", "Advanced Concepts", "OOP", "Practical Python",
+         "Automation & Pipelines", "NumPy Fundamentals", "Testing Modules", "Currently Exploring"]
+    )
+else:
+    menu_choice = None
+
+if sidebar_choice == "Welcome" or menu_choice == "Welcome":
     st.markdown("""
     <div style="text-align:center; padding:30px; background-color:#fff8dc; border-radius:10px; border:2px solid #C2B280">
         <h1 style="color:#6a1b9a">Welcome to My Python Learning Roadmap</h1>
@@ -82,7 +101,7 @@ if section == "Welcome":
     </div>
     """, unsafe_allow_html=True)
 
-elif section == "About Me":
+elif sidebar_choice == "About Me" or menu_choice=="About Me":
     st.subheader("About me")
     col1, col2 = st.columns([2, 1])  # col1 takes twice the width of col2
     st.markdown("""
@@ -100,7 +119,7 @@ elif section == "About Me":
         </div>
     """, unsafe_allow_html=True)
 
-elif section == "Foundations":
+elif sidebar_choice == "Foundations" or menu_choice == "Foundations":
     st.header("🔰 Python Foundations")
     with st.expander("🐣 Basic Syntax & Variables"):
         st.markdown("- Python syntax, indentation\n- Variable assignment\n- Naming conventions\n- User Input\n- Type Casting")
@@ -499,7 +518,7 @@ elif section == "Foundations":
             st.write(f"🧼 Trimmed: `{user_input.strip()}`")
             st.write(f"🅰️ Initials: `{''.join([word[0] for word in user_input.split() if word])}`")
 
-elif section == "Advanced Concepts":
+elif sidebar_choice == "Advanced Concepts" or menu_choice == "Advanced Concepts":
     st.header("🚀 Functional & Advanced Python")
     with st.expander(" ⚡ Functional Programming in Python"):
         st.markdown("""
@@ -718,7 +737,7 @@ elif section == "Advanced Concepts":
             if score == 3:
                 st.balloons()
 
-elif section == "OOP":
+elif sidebar_choice == "OOP" or menu_choice == "OOP":
     st.header("🧱 Object-Oriented Programming")
 
     with st.expander("📦 Classes & Objects"):
@@ -839,7 +858,7 @@ elif section == "OOP":
             > like crafting a lineage of logic with elegance and intent.
             """)
 
-elif section == "Practical Python":
+elif sidebar_choice == "Practical Python" or menu_choice  == "Practical Python":
     st.header("🗂️ System & Data Utilities")
     with st.expander("🔧 File Handling & Logging"):
         st.markdown("""
@@ -1023,7 +1042,7 @@ elif section == "Practical Python":
         """, language="python")
         st.success("🎉 MySQL example complete — you've created, calculated, and captured student insights!")
 
-elif section == "Automation & Pipelines":
+elif sidebar_choice == "Automation & Pipelines" or menu_choice == "Automation & Pipelines":
     st.header("⏱️ Automation & ETL Concepts")
     with st.expander("Time-Based Trigger – `while True` + `cron`"):
         st.markdown("""
@@ -1164,7 +1183,7 @@ elif section == "Automation & Pipelines":
     extract_task >> transform_task
     """, language="python")
 
-elif section == "NumPy Fundamentals":
+elif sidebar_choice == "NumPy Fundamentals" or menu_choice == "NumPy Fundamentals":
     with st.expander("🧮 NumPy Fundamentals"):
         st.markdown("""
         This module covers:
@@ -1208,7 +1227,7 @@ elif section == "NumPy Fundamentals":
     matrix[matrix % 2 == 1] = -2
     """, language="python")
         st.markdown("Try replacing `input()` with `st.number_input()` if you want to make this interactive in Streamlit.")
-elif section == "Testing Modules":
+elif sidebar_choice == "Testing Modules" or menu_choice == "Testing Modules":
     with st.expander("🧪 Python Testing Basics"):
         st.markdown("""
             Testing is the process of verifying that your code behaves as expected — reliably, safely, and correctly.
@@ -1299,7 +1318,7 @@ elif section == "Testing Modules":
                     assert True
             """, language="python")
 
-elif section == "Currently Exploring":
+elif sidebar_choice == "Currently Exploring" or menu_choice == "Currently Exploring":
     with st.expander("🚧 Currently Exploring"):
         st.markdown("""
         - Flask – building routes, handling requests, and serving dynamic content
