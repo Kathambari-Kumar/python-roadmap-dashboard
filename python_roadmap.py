@@ -1343,4 +1343,10 @@ elif section == "Currently Exploring":
 # Footer
 st.markdown("---")
 st.caption("✨ Built with Streamlit | Inspired by real-world backend workflows")
+st.markdown("""
+<div style='text-align: center; font-size: 14px; color: gray; margin-top: 50px;'>
+Made with 💡 by Kathambari — exploring Python with clarity and creativity.
+</div>
+""", unsafe_allow_html=True)
+
 
