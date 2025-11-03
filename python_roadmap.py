@@ -89,10 +89,12 @@ if screen_width and screen_width < 768:
         ["Welcome", "About Me", "Foundations", "Advanced Concepts", "OOP", "Practical Python",
          "Automation & Pipelines", "NumPy Fundamentals", "Testing Modules", "Currently Exploring"]
     )
+    active_section = menu_choice
 else:
     menu_choice = None
+    active_section = sidebar_choice
 
-if sidebar_choice == "Welcome" or menu_choice == "Welcome":
+if active_section == "Welcome":
     st.markdown("""
     <div style="text-align:center; padding:30px; background-color:#fff8dc; border-radius:10px; border:2px solid #C2B280">
         <h1 style="color:#6a1b9a">Welcome to My Python Learning Roadmap</h1>
@@ -119,7 +121,7 @@ elif sidebar_choice == "About Me" or menu_choice=="About Me":
         </div>
     """, unsafe_allow_html=True)
 
-elif sidebar_choice == "Foundations" or menu_choice == "Foundations":
+elif active_section == "Foundations":
     st.header("🔰 Python Foundations")
     with st.expander("🐣 Basic Syntax & Variables"):
         st.markdown("- Python syntax, indentation\n- Variable assignment\n- Naming conventions\n- User Input\n- Type Casting")
@@ -518,7 +520,7 @@ elif sidebar_choice == "Foundations" or menu_choice == "Foundations":
             st.write(f"🧼 Trimmed: `{user_input.strip()}`")
             st.write(f"🅰️ Initials: `{''.join([word[0] for word in user_input.split() if word])}`")
 
-elif sidebar_choice == "Advanced Concepts" or menu_choice == "Advanced Concepts":
+elif active_section == "Advanced Concepts":
     st.header("🚀 Functional & Advanced Python")
     with st.expander(" ⚡ Functional Programming in Python"):
         st.markdown("""
@@ -737,7 +739,7 @@ elif sidebar_choice == "Advanced Concepts" or menu_choice == "Advanced Concepts"
             if score == 3:
                 st.balloons()
 
-elif sidebar_choice == "OOP" or menu_choice == "OOP":
+elif active_section == "OOP":
     st.header("🧱 Object-Oriented Programming")
 
     with st.expander("📦 Classes & Objects"):
@@ -858,7 +860,7 @@ elif sidebar_choice == "OOP" or menu_choice == "OOP":
             > like crafting a lineage of logic with elegance and intent.
             """)
 
-elif sidebar_choice == "Practical Python" or menu_choice  == "Practical Python":
+elif active_section == "Practical Python":
     st.header("🗂️ System & Data Utilities")
     with st.expander("🔧 File Handling & Logging"):
         st.markdown("""
@@ -1042,7 +1044,7 @@ elif sidebar_choice == "Practical Python" or menu_choice  == "Practical Python":
         """, language="python")
         st.success("🎉 MySQL example complete — you've created, calculated, and captured student insights!")
 
-elif sidebar_choice == "Automation & Pipelines" or menu_choice == "Automation & Pipelines":
+elif active_section == "Automation & Pipelines":
     st.header("⏱️ Automation & ETL Concepts")
     with st.expander("Time-Based Trigger – `while True` + `cron`"):
         st.markdown("""
@@ -1183,7 +1185,7 @@ elif sidebar_choice == "Automation & Pipelines" or menu_choice == "Automation & 
     extract_task >> transform_task
     """, language="python")
 
-elif sidebar_choice == "NumPy Fundamentals" or menu_choice == "NumPy Fundamentals":
+elif active_section == "NumPy Fundamentals":
     with st.expander("🧮 NumPy Fundamentals"):
         st.markdown("""
         This module covers:
@@ -1227,7 +1229,7 @@ elif sidebar_choice == "NumPy Fundamentals" or menu_choice == "NumPy Fundamental
     matrix[matrix % 2 == 1] = -2
     """, language="python")
         st.markdown("Try replacing `input()` with `st.number_input()` if you want to make this interactive in Streamlit.")
-elif sidebar_choice == "Testing Modules" or menu_choice == "Testing Modules":
+elif  active_section == "Testing Modules":
     with st.expander("🧪 Python Testing Basics"):
         st.markdown("""
             Testing is the process of verifying that your code behaves as expected — reliably, safely, and correctly.
@@ -1318,7 +1320,7 @@ elif sidebar_choice == "Testing Modules" or menu_choice == "Testing Modules":
                     assert True
             """, language="python")
 
-elif sidebar_choice == "Currently Exploring" or menu_choice == "Currently Exploring":
+elif active_section == "Currently Exploring":
     with st.expander("🚧 Currently Exploring"):
         st.markdown("""
         - Flask – building routes, handling requests, and serving dynamic content
