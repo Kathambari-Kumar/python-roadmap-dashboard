@@ -999,9 +999,6 @@ elif active_section == "Practical Python":
         print(greet_user(""))
         """, language="python")
 
-            st.success(
-                "🎉 File handling and logging section complete — Unlocked the power of persistence and traceability!")
-
     with st.expander("🧮 Databases"):
         st.markdown("""           
             Example – Student Marks Management
@@ -1067,7 +1064,6 @@ elif active_section == "Practical Python":
         finally:
             connection.commit()
         """, language="python")
-        st.success("🎉 MySQL example complete — you've created, calculated, and captured student insights!")
 
 elif active_section == "Automation & Pipelines":
     st.header("⏱️ Automation & ETL Concepts")
