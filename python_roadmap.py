@@ -905,7 +905,7 @@ elif active_section == "Practical Python":
             #
             Write to a file
             with open("journal.txt", "w") as file:
-                file.write("Dear Kathambari\n")
+                file.write("Dear Kathambari\\n")
                 file.write("Today we explored file handling in Python.")
 
             #Read the file
@@ -918,7 +918,7 @@ elif active_section == "Practical Python":
         st.code("""        
         # Append a new entry
         with open("journal.txt", "a") as file:
-            file.write("Adding one more thought...\n")
+            file.write("Adding one more thought...\\n")
 
         # Read line by line
         with open("journal.txt", "r") as file:
@@ -1060,7 +1060,7 @@ elif active_section == "Practical Python":
                 # Step 5: Write to file
                 with open("student_averages.txt", "w") as file:
                     for row in result:
-                        file.write(f"{row['name']} - Average Marks: {row['average_marks']:.2f}\n")
+                        file.write(f"{row['name']} - Average Marks: {row['average_marks']:.2f}\\n")
 
         except Exception as e:
             print("Error occurred:", e)
