@@ -928,10 +928,10 @@ elif active_section == "Practical Python":
 
         st.markdown(" 🔍 Searching for Keywords")
         st.code("""
-                with open("journal.txt", "r") as file:
-                    for line in file:
-                        if "thought" in line:
-                            print("Found keyword:", line.strip())
+        with open("journal.txt", "r") as file:
+            for line in file:
+                if "thought" in line:
+                    print("Found keyword:", line.strip())
             """, language="python")
 
     with st.expander("📑 CSV File Input & Handling"):
