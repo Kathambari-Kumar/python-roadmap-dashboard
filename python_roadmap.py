@@ -88,7 +88,7 @@ sidebar_choice = st.sidebar.radio("", [
 
 if screen_width and screen_width < 768:
     st.markdown("""
-        <div style='text-align: center; font-size: 14px; color: #6A5ACD; margin-bottom: 10px;'>
+        <div style='text-align: center; font-size: 14px; color: #6A5ACD; margin-bottom: 5px;'>
         📱 Tap below to explore the roadmap
         </div>
         """, unsafe_allow_html=True)
