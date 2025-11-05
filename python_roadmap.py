@@ -40,11 +40,14 @@ section[data-testid="stSidebar"] {
     font-weight:bold;
 }
 
-/* Hide mobile menu on screens wider than 768px */
+/* Hide avatar on screens smaller than 768px */
 @media (max-width: 768px) {
     .avatar {
         display:none;   
     }
+}
+/* Hide mobile menu on screens wider than 768px */
+@media (min-width: 768px) {
     .mobile-menu {
         display: none;
     }
@@ -104,12 +107,19 @@ else:
 
 if active_section == "Welcome":
     st.markdown("""
-    <div style="text-align:center; padding:30px; background-color:#fff8dc; border-radius:10px; border:2px solid #C2B280">
+    <div style="text-align:center; margin-bottom:10px; padding:30px; background-color:#fff8dc; border-radius:10px; border:2px solid #C2B280">
         <h1 style="color:#6a1b9a">Welcome to My Python Learning Roadmap</h1>
         <p style="font-size:18px; color:#333333">Crafted with clarity, creativity, and care.</p>
         <img src="https://cdn-icons-png.flaticon.com/512/1822/1822920.png" width="100">
     </div>
     """, unsafe_allow_html=True)
+    with st.expander("🔧 Backend Tools Overview"):
+        st.markdown("""
+        - **Pandas**: Clean and transform data  
+        - **Requests**: Fetch data from APIs  
+        - **streamlit-js-eval**: Add JavaScript interactivity  
+        """)
+
 
 elif sidebar_choice == "About Me" or menu_choice=="About Me":
     st.subheader("About me")
@@ -249,14 +259,19 @@ elif active_section == "Foundations":
         """, language="python")
 
     with st.expander("📚 Collections"):
-        st.markdown("- Lists, Tuples, Sets, Dictionaries")
-        with st.expander("List – Ordered, Mutable, Allows Duplicates"):
+        st.markdown("""
+        - Lists: ordered, mutable, duplicates allowed  
+        - Tuples: ordered, immutable  
+        - Sets: unordered, unique items  
+        - Dictionaries: key-value pairs, fast lookup
+        """)
+        with st.expander("List – Book Collection "):
             st.markdown("""
             - Lists maintain order and allow duplicates.
             - You can add, insert, remove, reverse, and pop items.
             """)
-            with st.expander("Managing List Items"):
-                st.code("""
+            st.write("Managing List Items")
+            st.code("""
                 # List – Ordered, Mutable, Allows Duplicates
                 books = ["Atomic Habits", "The Power of Now", "Mindset"]
                 books.append("Atomic Habits")  # Adds a duplicate
@@ -282,21 +297,20 @@ elif active_section == "Foundations":
                 # ['Atomic Habits', 'Mindset', 'Flow']    
                 """, language="python")
 
-            with st.expander("Working with Lists"):
-               st.write("🔪 List Slicing, 🔁 List Iteration, 🔃 List Sorting")
-               st.code("""
+            st.write("🔪 List Slicing, 🔁 List Iteration, 🔃 List Sorting")
+            st.code("""
                 books = ["Atomic Habits", "Mindset", "Flow", "Deep Work"]
                 print(books[1:3])  # ['Mindset', 'Flow']
                 """, language="python")
 
-               st.code("""
+            st.code("""
                books = ["Atomic Habits", "Mindset", "Flow", "Deep Work"]
                 for book in books:
                     print("Reading:", book)
                 """, language="python")
 
-               st.code("""
-               books = ["Atomic Habits", "Mindset", "The Power of Now", "Flow"]
+            st.code("""
+                books = ["Atomic Habits", "Mindset", "The Power of Now", "Flow"]
                 books.sort()
                 print(books)  # Alphabetical order
                 books.sort(reverse=True) #descending order
@@ -357,6 +371,7 @@ elif active_section == "Foundations":
             print(difference)
             # {'brownie', 'pancakes'}
         """, language="python")
+
         with st.expander("🗂️ Dictionary – Person Profile"):
             st.markdown("""
            - Dictionaries store key-value pairs with no duplicate keys.
@@ -492,19 +507,19 @@ elif active_section == "Foundations":
                 score += 1
                 st.success("🏆 Q1 Correct!")
             else:
-                st.warning("Q1 Incorrect. Correct Answer : Reverse")
+                st.warning("Q1 Incorrect. Correct Answer : **Reverse**")
 
             if q2 == "Set":
                 score += 1
                 st.success("🏆 Q2 Correct!")
             else:
-                st.warning("Q2 Incorrect. Correct Answer : Set")
+                st.warning("Q2 Incorrect. Correct Answer : **Set**")
 
             if q3 == "Condition":
                 score += 1
                 st.success("🏆 Q3 Correct!")
             else:
-                st.warning("Q3 Incorrect. Correct Answer : Condition")
+                st.warning("Q3 Incorrect. Correct Answer : **Condition**")
 
             st.markdown(f"### 🎯 Final Score: **{score}/3**")
             if score == 3:
@@ -519,14 +534,15 @@ elif active_section == "Foundations":
             """)
 
         user_input = st.text_input("Enter your text here:")
+        clean_input = user_input.strip()
 
-        if user_input:
-            st.write(f"🔁 Reversed: `{user_input[::-1]}`")
-            st.write(f"🔢 Length: `{len(user_input)}`")
-            st.write(f"🔤 Uppercase: `{user_input.upper()}`")
-            st.write(f"🔡 Lowercase: `{user_input.lower()}`")
-            st.write(f"🧼 Trimmed: `{user_input.strip()}`")
-            st.write(f"🅰️ Initials: `{''.join([word[0] for word in user_input.split() if word])}`")
+        if  clean_input:
+            st.write(f"🔁 Reversed: `{ clean_input[::-1]}`")
+            st.write(f"🔢 Length: `{len(clean_input)}`")
+            st.write(f"🔤 Uppercase: `{clean_input.upper()}`")
+            st.write(f"🔡 Lowercase: `{clean_input.lower()}`")
+            st.write(f"🧼 Trimmed: `{clean_input.strip()}`")
+            st.write(f"🅰️ Initials: `{''.join([word[0] for word in  clean_input.split() if word])}`")
 
 elif active_section == "Advanced Concepts":
     st.header("🚀 Functional & Advanced Python")
@@ -602,7 +618,7 @@ elif active_section == "Advanced Concepts":
             """, language="python")
 
             st.markdown(""" > Closure 
-                - Function that remembers variables from its enclosing scope even after that scope has finished.
+            - Function that remembers variables from its enclosing scope even after that scope has finished.
                 """)
 
             st.code("""
@@ -616,7 +632,7 @@ elif active_section == "Advanced Concepts":
             """, language="python")
 
             st.markdown(""" > Partial Functions
-                - Fix some arguments of a function using `functools.partial`.
+            - Fix some arguments of a function using `functools.partial`.
                 """)
             st.code("""
                from functools import partial
@@ -629,7 +645,7 @@ elif active_section == "Advanced Concepts":
                 """, language="python")
 
             st.markdown("""  > Callback Functions
-                - Pass a function as an argument to be executed later.
+            - Pass a function as an argument to be executed later.
                 """)
             st.code("""
                 def on_button_click(callback):
@@ -642,7 +658,7 @@ elif active_section == "Advanced Concepts":
                 on_button_click(show_message)
         """)
             st.markdown("""  > Recursive Functions
-                - A function that calls itself to solve smaller versions of a problem.
+            - A function that calls itself to solve smaller versions of a problem.
             """)
             st.code("""
                 def factorial(n):
@@ -711,6 +727,7 @@ elif active_section == "Advanced Concepts":
                 print(number)  # 0 1 2 3 4
         """, language="python")
         st.success("🎉 Iterators and Generators section complete!")
+
     with st.expander("🧪 Quiz: Functional Programming & Lazy Iteration"):
         st.markdown(
             "> This short quiz explores concepts like lambdas, higher-order functions, iterators, and generators.")
@@ -729,21 +746,21 @@ elif active_section == "Advanced Concepts":
                 score += 1
                 st.success("✅ Q1 Correct!")
             else:
-                st.warning("❌ Q1 Incorrect. Correct Answer: An anonymous function")
+                st.warning("❌ Q1 Incorrect. Correct Answer: **An anonymous function**")
 
             if q2 == "Generator":
                 score += 1
                 st.success("✅ Q2 Correct!")
             else:
-                st.warning("❌ Q2 Incorrect. Correct Answer: Generator")
+                st.warning("❌ Q2 Incorrect. Correct Answer: **Generator**")
 
             if q3 == "Returns the next item":
                 score += 1
                 st.success("✅ Q3 Correct!")
             else:
-                st.warning("❌ Q3 Incorrect. Correct Answer: Returns the next item")
+                st.warning("❌ Q3 Incorrect. Correct Answer: **Returns the next item**")
 
-            st.markdown(f"###  Score: **{score}/3**")
+            st.markdown(f"### 🎯  Score: **{score}/3**")
             if score == 3:
                 st.balloons()
 
@@ -849,14 +866,15 @@ elif active_section == "OOP":
         st.code("""
             class Demo:
                 def __init__(self):
-                    self.name = "Public"
-                    self._age = 30
-                    self.__secret = "Hidden"
+                    self.name = "Public"            # Public attribute
+                    self._age = 30                      # Protected (by convention)
+                    self.__secret = "Hidden"    # Private (name mangled)
         
             obj = Demo()
-            print(obj.name)       # Public
-            print(obj._age)       # 30
-        # print(obj.__secret) # Error: not accessible
+            print(obj.name)                      # Public
+            print(obj._age)                       # Accessible, but intended as protected
+            #print(obj.__secret)              # AttributeError: not directly accessible
+            print(obj._Demo__secret)    # Access via name mangling
     """, language="python")
 
     # Poetic summary
@@ -897,9 +915,8 @@ elif active_section == "Practical Python":
         """, language="python")
 
         st.markdown("➕ Appending & Line-by-Line Reading")
-        st.code("""
-                    #
-                    Append a new entry
+        st.code("""        
+        # Append a new entry
         with open("journal.txt", "a") as file:
             file.write("Adding one more thought...\n")
 
@@ -907,15 +924,14 @@ elif active_section == "Practical Python":
         with open("journal.txt", "r") as file:
             for line in file:
                 print(line.strip())
-                    """, language="python")
+        """, language="python")
 
         st.markdown(" 🔍 Searching for Keywords")
         st.code("""
                 with open("journal.txt", "r") as file:
                     for line in file:
-                    if "thought" in line:
-                    print("Found keyword:"
-                   , line.strip())
+                        if "thought" in line:
+                            print("Found keyword:", line.strip())
             """, language="python")
 
     with st.expander("📑 CSV File Input & Handling"):
@@ -952,8 +968,8 @@ elif active_section == "Practical Python":
             with open("people.csv", "r") as file:
                 lines = file.readlines()
                 for line in lines[1:]: # Skip header
-                columns = line.strip().split(",")
-                print(columns[2]) # Print city
+                    columns = line.strip().split(",")
+                    print(columns[2]) # Print city
                     """, language="python")
 
     with st.expander("📜 Logging"):
@@ -1044,7 +1060,7 @@ elif active_section == "Practical Python":
                 # Step 5: Write to file
                 with open("student_averages.txt", "w") as file:
                     for row in result:
-                        file.write(f"{row['name']} - Average Marks: {row['average_marks']:.2f}\\n")
+                        file.write(f"{row['name']} - Average Marks: {row['average_marks']:.2f}\n")
 
         except Exception as e:
             print("Error occurred:", e)
@@ -1074,7 +1090,7 @@ elif active_section == "Automation & Pipelines":
     def task():
         uptime = os.popen("uptime").read().strip()
         with open("/home/kathambari/airflow/uptime_log.txt", "a") as f:
-            f.write(f"Uptime: {uptime}\\n")
+            f.write(f"Uptime: {uptime}\n")
         print("Logged uptime:", uptime)
 
     while True:
@@ -1107,6 +1123,7 @@ elif active_section == "Automation & Pipelines":
             - Extracts quotes from an API  
             - Transforms them by adding `length` and `mood`  
             - Saves both raw and transformed CSVs
+            > 📊 Use Airflow's web UI to visualize DAG execution and monitor task status.
             """)
             st.code("""
     import pandas as pd
@@ -1223,7 +1240,7 @@ elif active_section == "NumPy Fundamentals":
     # Math operations
     x = np.arange(1, 10)
     y = np.arange(1, 10)
-    sum = x + y
+    total = x + y
     squared = x ** 2
     sqrt = np.sqrt(squared)
     exp = np.exp(x)
@@ -1234,10 +1251,11 @@ elif active_section == "NumPy Fundamentals":
     my_2d_array = np.random.randint(1,10, (4,4))
     
     # Conditional selection
-    matrix[matrix < 0] = 0
-    matrix[matrix % 2 == 1] = -2
+    my_2d_array[my_2d_array < 0] = 0
+    my_2d_array[my_2d_array % 2 == 1] = -2
     """, language="python")
         st.markdown("Try replacing `input()` with `st.number_input()` if you want to make this interactive in Streamlit.")
+
 elif  active_section == "Testing Modules":
     with st.expander("🧪 Python Testing Basics"):
         st.markdown("""
@@ -1257,17 +1275,17 @@ elif  active_section == "Testing Modules":
             - Great for understanding string slicing and basic testing
             """)
             st.code("""
-        # string_logic.py
-        def reverse_string(s):
-            return s[::-1]
-
-        # test_string_logic.py
-        from string_logic import reverse_string
-
-        def test_reverse_string():
-            assert reverse_string("hello") == "olleh"
-
-        test_reverse_string()
+            # string_logic.py
+            def reverse_string(s):
+                return s[::-1]
+    
+            # test_string_logic.py
+            from string_logic import reverse_string
+    
+            def test_reverse_string():
+                assert reverse_string("hello") == "olleh"
+    
+            test_reverse_string()
         """, language="python")
 
         with st.expander("Even Number Test"):
@@ -1277,18 +1295,18 @@ elif  active_section == "Testing Modules":
             - Simple logic with clear pass/fail behavior
             """)
             st.code("""
-        # number_logic.py
-        def is_even(n):
-            return n % 2 == 0
-
-        # test_number_logic.py
-        from number_logic import is_even
-
-        def test_is_even():
-            assert is_even(4) == True
-            assert is_even(7) == False
-
-        test_is_even()
+            # number_logic.py
+            def is_even(n):
+                return n % 2 == 0
+    
+            # test_number_logic.py
+            from number_logic import is_even
+    
+            def test_is_even():
+                assert is_even(4) == True
+                assert is_even(7) == False
+    
+            test_is_even()
         """, language="python")
         with st.expander("Palindrome Checker Test"):
             st.markdown("""
@@ -1298,20 +1316,20 @@ elif  active_section == "Testing Modules":
             """)
 
             st.code("""
-        # palindrome_logic.py
-        def is_palindrome(s):
-            return s == s[::-1]
-        """, language="python")
+            # palindrome_logic.py
+            def is_palindrome(s):
+                return s == s[::-1]
+            """, language="python")
 
             st.code("""
-        # test_palindrome_logic.py
-        from palindrome_logic import is_palindrome
-
-        def test_is_palindrome():
-            assert is_palindrome("madam") == True
-            assert is_palindrome("hello") == False
-
-        test_is_palindrome()
+            # test_palindrome_logic.py
+            from palindrome_logic import is_palindrome
+    
+            def test_is_palindrome():
+                assert is_palindrome("madam") == True
+                assert is_palindrome("hello") == False
+    
+            test_is_palindrome()
         """, language="python")
         with st.expander("Test for exception handling"):
             st.markdown("""
@@ -1334,6 +1352,7 @@ elif active_section == "Currently Exploring":
         st.markdown("""
         - Flask – building routes, handling requests, and serving dynamic content
         - PyTorch – exploring tensors, gradients, and model training for data science workflows   
+        > Run `python app.py` in your terminal and visit `http://localhost:5000` to see the Flask app.
          """)
         st.code("""
         # app.py
@@ -1351,22 +1370,22 @@ elif active_section == "Currently Exploring":
 
         """, language="python")
         st.code("""
-            # pytorch_intro.py
+        # pytorch_intro.py
 
-            import torch
+        import torch
 
-            # Create a tensor
-            x = torch.tensor([[1.0, 2.0], [3.0, 4.0]], requires_grad=True)
+        # Create a tensor
+        x = torch.tensor([[1.0, 2.0], [3.0, 4.0]], requires_grad=True)
 
-            # Perform operations
-            y = x * 2 + 1
-            z = y.mean()
+        # Perform operations
+        y = x * 2 + 1
+        z = y.mean()
 
-            # Backpropagate
-            z.backward()
+        # Backpropagate
+        z.backward()
 
-            # Print gradients
-            print(x.grad)
+        # Print gradients
+        print(x.grad)
             """, language="python")
 
 # Footer
