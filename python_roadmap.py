@@ -1001,12 +1001,13 @@ elif active_section == "Practical Python":
 
         st.code("""
         import pymysql.cursors
-
+        import os
+        
         # Step 1: Connect to the database
         connection = pymysql.connect(
             host='localhost',
             user='root',
-            password='',
+            password=os.getenv('DB_PASSWORD'),
             db='school_db',
             cursorclass=pymysql.cursors.DictCursor
         )
