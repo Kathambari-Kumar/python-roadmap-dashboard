@@ -41,7 +41,10 @@ section[data-testid="stSidebar"] {
 }
 
 /* Hide mobile menu on screens wider than 768px */
-@media (min-width: 768px) {
+@media (max-width: 768px) {
+    .avatar {
+        display:none;   
+    }
     .mobile-menu {
         display: none;
     }
@@ -120,7 +123,7 @@ elif sidebar_choice == "About Me" or menu_choice=="About Me":
             I thrive where creativity meets code, transforming technology from mere function into feeling. 
             To me, great software should be like poetry—elegant, intuitive, and profoundly human.</p>
         </div>
-        <div style="flex:3; text-align:center; padding-top:35px">
+        <div  class ="avatar" style="flex:3; text-align:center; padding-top:35px">
         <img src = "https://t3.ftcdn.net/jpg/07/28/48/98/360_F_728489827_qtQHjlMEeD53QhTdUEtdOvNPQw21pYjh.jpg" style="width:140px;height:140px">
         <p style="color:#C2B280; font-size:20px">Developer | Designer | Author</p>
         </div>
