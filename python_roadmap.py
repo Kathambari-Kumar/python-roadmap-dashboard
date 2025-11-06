@@ -113,11 +113,12 @@ if active_section == "Welcome":
         <img src="https://cdn-icons-png.flaticon.com/512/1822/1822920.png" width="100">
     </div>
     """, unsafe_allow_html=True)
-    with st.expander("🔧 Backend Tools Overview"):
+    with st.expander("🛠️ Backend Tools Used"):
         st.markdown("""
-        - **Pandas**: Clean and transform data  
-        - **Requests**: Fetch data from APIs  
-        - **streamlit-js-eval**: Add JavaScript interactivity  
+        - 🐼 **Pandas** — data manipulation  
+        - 🔗 **Requests** — API calls  
+        - 🧠 **streamlit-js-eval** — dynamic JS evaluation  
+        - 🕸️ **Apache Airflow** — DAG-based orchestration for ETL workflows  
         """)
 
 
