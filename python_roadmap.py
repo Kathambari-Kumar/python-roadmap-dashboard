@@ -205,8 +205,7 @@ elif active_section == "Foundations":
             - Use regular expressions for advanced replacements.
             - Count words, reverse strings, and extract initials.
             """)
-        st.write("🔤 Case Conversion")
-        st.markdown("- Convert strings to uppercase, lowercase, and title case.")
+        st.markdown("**Case Conversion:** Convert strings to uppercase, lowercase, and title case.")
         st.code("""
         text = "good morning"
         print(text.upper())    # GOOD MORNING
@@ -214,8 +213,7 @@ elif active_section == "Foundations":
         print(text.title())    # Good Morning
         """, language="python")
 
-        st.write("🔗 Splitting & Joining")
-        st.markdown("- Split strings into lists and join them back with custom separators.")
+        st.markdown("**Splitting & Joining:** Split strings into lists and join them back with custom separators.")
         st.code("""
         sentence = "Data Science is fun"
         words = sentence.split()  # ['Data', 'Science', 'is', 'fun']
@@ -223,24 +221,21 @@ elif active_section == "Foundations":
         print(joined)
         """, language="python")
 
-        st.write("🔍 Searching & Replacing")
-        st.markdown("- Find substrings and replace them with new values.")
+        st.markdown("**Searching & Replacing:** Find substrings and replace them with new values.")
         st.code("""
         text = "Welcome to Python programming"
         print(text.find("Python"))  # 11
         print(text.replace("Python", "JavaScript"))  # Welcome to JavaScript programming
         """, language="python")
 
-        st.write("🧼 Trimming Whitespace")
-        st.markdown("- Remove leading and trailing spaces.")
+        st.markdown("**Trimming Whitespace:** Remove leading and trailing spaces.")
         st.code("""
         text = "  Hello Sweden  "
         trimmed = text.strip()
         print(f"'{trimmed}'")  # 'Hello Sweden'
         """, language="python")
 
-        st.write("🔢 Word Count & Initials")
-        st.markdown("- Count words and extract first letters of each word.")
+        st.markdown("**Word Count & Initials:** Count words and extract first letters of each word.")
         st.code("""
         text = "Python powers poetic dashboards"
         word_count = len(text.split())  # 4
@@ -249,8 +244,7 @@ elif active_section == "Foundations":
         print(f"Initials: {initials}")      # Pppd
         """, language="python")
 
-        st.write("📏 Length & Slicing")
-        st.markdown("- Measure string length and extract parts using slicing.")
+        st.markdown("**Length & Slicing:** Measure string length and extract parts using slicing.")
         st.code("""
         text = "Finspång"
         print(len(text))      # 8
