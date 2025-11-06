@@ -720,7 +720,6 @@ elif active_section == "Advanced Concepts":
             for number in get_numbers(5):
                 print(number)  # 0 1 2 3 4
         """, language="python")
-        st.success("🎉 Iterators and Generators section complete!")
 
     with st.expander("🧪 Quiz: Functional Programming & Lazy Iteration"):
         st.markdown(
