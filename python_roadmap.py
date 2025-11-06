@@ -1086,7 +1086,7 @@ elif active_section == "Automation & Pipelines":
     def task():
         uptime = os.popen("uptime").read().strip()
         with open("/home/kathambari/airflow/uptime_log.txt", "a") as f:
-            f.write(f"Uptime: {uptime}\n")
+            f.write(f"Uptime: {uptime}\\n")
         print("Logged uptime:", uptime)
 
     while True:
