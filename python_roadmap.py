@@ -1259,10 +1259,10 @@ elif  active_section == "Testing Modules":
             In Python, testing can be as simple as using `assert` statements to check logic, or as advanced as using frameworks like `pytest`, `unittest`, or `doctest`.
 
             This section includes:
-            - ✅ Basic assertion tests (e.g., string reversal, even number check)
-            - 🚨 Exception handling tests (e.g., divide-by-zero)
-            - 🔍 Edge case validation (e.g., empty strings, negative numbers)
-            - 🧩 Core logic testing (custom functions like `multiply`, `is_palindrome`, etc.)
+            - String reversal tests — practice slicing and assertions
+            - Even number checks — simple logic with clear pass/fail behavior
+            - Palindrome validation — conditionals and string symmetry
+            - Exception handling tests — verifying errors like KeyError
             """)
         with st.expander("String Reversal Test"):
             st.markdown("""
